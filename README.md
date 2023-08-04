@@ -49,10 +49,11 @@ Significant security enchancements of recent major Android versions, starting wi
 * Background apps cannot launch other Activites (e.g. other apps)
 * File Based Encryption (FBE) is mandatory for devices that launch with this Android version (devices updated to it can still continue using Full Disk Encryption)
 * FLAG_SECURE flag is added for biometric or device credential (PIN, pattern or password) prompts, including unlocking the device and BiometricPrompt in apps. This means you cannot make a screenshot of these screens and they appear black in screen shares.
+* StrandHogg 2.0 exploit no longer possible
 
 ## Android 11 - Red Velvet Cake (API 30)
 
-* Task Hijacking (StrandHogg 1.0) vulnerability no longer possible
+* Task Hijacking (StrandHogg 1.0) exploit no longer possible
 * Apps cannot query information about other installed apps by default
 * Permissions auto-reset for unused apps
 
