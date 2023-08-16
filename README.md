@@ -25,6 +25,7 @@ Significant security enchancements of recent major Android versions, starting wi
 ## Android 8 - Oreo (API 26)
 
 * JavaScript evaluation runs in a separate process in WebViews so JavaScript code cannot access the app's memory so easily
+* WebView respects network security configuration and cleartextTrafficPermitted flag (on older Abdroid version it loads HTTP sites even if clear text traffic should not be allowed otherwise)
 * FLAG_SECURE Window flag is supported more and disallows taking screenshots of the screen where this is set.
 * Update to Keymaster 3 with C++ HAL (instead of a C one), addition of HIDL and ID attestation support
 * Project Treble introduced separating lower-level vendor code from Android system framework and enabling easier security update delivery. Keep in mind that only devices released with this version support project Treble, the ones updated will not get it.
