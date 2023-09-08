@@ -6,10 +6,10 @@ Significant security enchancements of recent major Android versions, starting wi
 
 [Security Enhancements in Android 5.0](https://source.android.com/docs/security/enhancements/enhancements50)
 
-* Starting August 2023, Google Play Services updates will only be received from this Android version see [https://android-developers.googleblog.com/2023/07/google-play-services-discontinuing-updates-for-kitkat.html](https://android-developers.googleblog.com/2023/07/google-play-services-discontinuing-updates-for-kitkat.html)
+* Starting August 2023, _Google Play Services_ updates will only be received from this Android version see [https://android-developers.googleblog.com/2023/07/google-play-services-discontinuing-updates-for-kitkat.html](https://android-developers.googleblog.com/2023/07/google-play-services-discontinuing-updates-for-kitkat.html)
 * [Full Disk Encryption (FDE)](https://source.android.com/docs/security/features/encryption/full-disk) by default (manufacturers can still opt out)
 * SELinux fully enforced
-* WebView is a separate package
+* `WebView` is a separate package
 
 ## Android 6 (API 23) - Marshmallow
 
@@ -36,7 +36,7 @@ Significant security enchancements of recent major Android versions, starting wi
 
 [Security Enhancements in Android 8.0](https://source.android.com/docs/security/enhancements/enhancements80)
 
-* JavaScript evaluation runs in a separate process in WebViews so JavaScript code cannot access the app's memory so easily, see [https://android-developers.googleblog.com/2017/06/whats-new-in-webview-security.html](https://android-developers.googleblog.com/2017/06/whats-new-in-webview-security.html)
+* JavaScript evaluation runs in a separate process in `WebView` so JavaScript code cannot access the app's memory so easily, see [https://android-developers.googleblog.com/2017/06/whats-new-in-webview-security.html](https://android-developers.googleblog.com/2017/06/whats-new-in-webview-security.html)
 * `WebView` respects [Network Security Config](https://developer.android.com/training/articles/security-config) and `cleartextTrafficPermitted` flag (on older Android version it loads HTTP sites even if clear text traffic should not be allowed by the config), see [https://developer.android.com/about/versions/oreo/android-8.0-changes#o-sec](https://developer.android.com/about/versions/oreo/android-8.0-changes#o-sec)
 * [Safe Browsing API](https://developer.android.com/develop/ui/views/layout/webapps/managing-webview#safe-browsing) added to `WebView`, see [https://developer.android.com/about/versions/oreo/android-8.0#wv](https://developer.android.com/about/versions/oreo/android-8.0#wv) so users would be warned when trying to navigating to a potentially unsafe website (verified by [Google Safe Browsing](https://developers.google.com/safe-browsing/)) if enabled
 * `FLAG_SECURE` `Window` flag is supported more and disallows taking screenshots of the screen where this is set.
@@ -50,25 +50,25 @@ Significant security enchancements of recent major Android versions, starting wi
 [Security Enhancements in Android 9](https://source.android.com/docs/security/enhancements/enhancements9)
 [Android 9 release notes - Security Features](https://source.android.com/docs/setup/about/p-release-notes#security_features)
 
-* Cleartext network traffic (HTTP) disabled by default, apps need to explicitly set `cleartextTrafficPermitted` to `true` in their [Network Security Config](https://developer.android.com/training/articles/security-config) it if they still want to use it (not recommended), see [https://developer.android.com/about/versions/pie/android-9.0-changes-28#tls-enabled](https://developer.android.com/about/versions/pie/android-9.0-changes-28#tls-enabled)
+* Cleartext network traffic (HTTP) disabled by default, apps need to explicitly set `cleartextTrafficPermitted` to `true` in their [Network Security Config](https://developer.android.com/training/articles/security-config) it if they still want to use it (not recommended), see [https://developer.android.com/about/versions/pie/android-9.0-changes-28#tls-enabled](https://developer.android.com/about/versions/pie/android-9.0-changes-28#tls-enabled) and [https://nphausg.medium.com/android-8-cleartext-http-traffic-not-permitted-73c1c9e3b803](https://nphausg.medium.com/android-8-cleartext-http-traffic-not-permitted-73c1c9e3b803)
 * Update to _Keymaster 4_ with support for 3DES encryption and secure key import, see [https://source.android.com/docs/security/features/keystore](https://source.android.com/docs/security/features/keystore) and [https://source.android.com/docs/security/features/keystore/implementer-ref](https://source.android.com/docs/security/features/keystore/implementer-ref)
 * Added support for embedded [Secure Element (SE)](https://source.android.com/docs/compatibility/cts/secure-element), see [https://source.android.com/docs/setup/about/p-release-notes#secure_element_se_service](https://source.android.com/docs/setup/about/p-release-notes#secure_element_se_service)
 * Reading contents of the Clipboard in the background requires special permission
 * Disk Encryption (can be either Full Disk Encryption or File Based Encryption) is mandatory for all devices (shipping with this version)
-* BiometricPrompt introduced standardizing the UI that is shown during biometric authentication and providing a better API to apps that is harder to misuse
+* `BiometricPrompt` introduced standardizing the UI that is shown during biometric authentication and providing a better API to apps that is harder to misuse
 
 ## Android 10 (API 29) - Quince Tart
 
 [Security Enhancements in Android 10](https://source.android.com/docs/security/enhancements/enhancements10)
 [Android 10 release notes](https://source.android.com/docs/setup/about/android-10-release)
 
-* File access disabled by default in WebViews
+* File access disabled by default in `WebView`
 * TLS 1.3 enabled by default
 * Certificates signed with SHA-1 no longer trusted in TLS
 * System overlay permissions are reset on reboot for apps downloaded from Google Play, and after 30 seconds for sideloaded apps.
 * Background apps cannot launch other Activites (e.g. other apps)
 * File Based Encryption (FBE) is mandatory for devices that launch with this Android version (devices updated to it can still continue using Full Disk Encryption)
-* FLAG_SECURE flag is added for biometric or device credential (PIN, pattern or password) prompts, including unlocking the device and BiometricPrompt in apps. This means you cannot make a screenshot of these screens and they appear black in screen shares.
+* `FLAG_SECURE` flag is added for biometric or device credential (PIN, pattern or password) prompts, including unlocking the device and `BiometricPrompt` in apps. This means you cannot make a screenshot of these screens and they appear black in screen shares.
 * StrandHogg 2.0 exploit no longer possible
 
 ## Android 11 (API 30) - Red Velvet Cake
@@ -90,7 +90,7 @@ Significant security enchancements of recent major Android versions, starting wi
 * The user gets notified if an app accesses Clipboard data of another app for the first time
 * Apps can no longer close System Dialogs
 * Tapjacking mitigation: Apps are prevented from consuming touch events where an overlay obscures the app
-* Scoped storage always enforced, opting out of it via requestLegacyExternalStorage is no longer possible
+* Scoped Storage always enforced, opting out of it via `requestLegacyExternalStorage` is no longer possible
 
 ## Android 13 (API 33) - Tiramisu
 
