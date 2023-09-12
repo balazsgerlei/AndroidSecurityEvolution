@@ -7,7 +7,7 @@ Significant security enchancements of recent major Android versions, starting wi
 [Security Enhancements in Android 5.0](https://source.android.com/docs/security/enhancements/enhancements50)
 
 * Starting August 2023, _Google Play Services_ updates will only be received from this Android version see [Google Play services discontinuing updates for KitKat (API levels 19 & 20) starting August 2023](https://android-developers.googleblog.com/2023/07/google-play-services-discontinuing-updates-for-kitkat.html)
-* [Full Disk Encryption (FDE)](https://source.android.com/docs/security/features/encryption/full-disk) by default (manufacturers can still opt out)
+* [Full Disk Encryption (FDE)](https://source.android.com/docs/security/features/encryption/full-disk) by default (manufacturers can still opt out), see [Encryption](https://source.android.com/docs/security/features/encryption)
 * [SELinux](https://source.android.com/docs/security/features/selinux) fully enforced
 * `WebView` is a separate package
 
@@ -31,7 +31,7 @@ Significant security enchancements of recent major Android versions, starting wi
 * By default apps targeting Android 7.0 only trust system-provided certificates and no longer trust user-added [Certificate Authorities (CA)](https://en.wikipedia.org/wiki/Certificate_authority), even without custom [Network Security Config](https://developer.android.com/training/articles/security-config), see [Default Trusted Certificate Authority of Android 7.0 for Developers](https://developer.android.com/about/versions/nougat/android-7.0#default_trusted_ca)
 * Update to _Keymaster 2_ with support for [Key Attestation](https://source.android.com/docs/security/features/keystore/attestation) and version binding (preventing rolling back to an unsecure old version without losing keys), see [Key Attestation section of Android 7.0 for Developers](https://developer.android.com/about/versions/nougat/android-7.0#key_attestation) and [Keymaster Functions](https://source.android.com/docs/security/features/keystore/implementer-ref) and [Verifying hardware-backed key pairs with Key Attestation
 ](https://developer.android.com/training/articles/security-key-attestation)
-* [File Based Encryption (FBE)](https://source.android.com/docs/security/features/encryption/file-based) introduced, but it's optional to implement by manufacturers, see [Direct Boot section of Android 7.0 for Developers](https://developer.android.com/about/versions/nougat/android-7.0#direct_boot) and [Support Direct Boot mode](https://developer.android.com/training/articles/direct-boot)
+* [File Based Encryption (FBE)](https://source.android.com/docs/security/features/encryption/file-based) introduced, but it's optional to implement by manufacturers, see [Direct Boot section of Android 7.0 for Developers](https://developer.android.com/about/versions/nougat/android-7.0#direct_boot) and [Support Direct Boot mode](https://developer.android.com/training/articles/direct-boot) and [Encryption](https://source.android.com/docs/security/features/encryption)
 * Updated [SELinux](https://source.android.com/docs/security/features/selinux) configuration: further locking fown application sandbox, breaking up mediaserver stack into smaller processes with reduced permissios (mitigation against Stagefright), see [Security-Enhanced Linux in Android](https://source.android.com/docs/security/features/selinux)
 
 ## Android 8 (API 26) - Oreo
@@ -70,15 +70,15 @@ Significant security enchancements of recent major Android versions, starting wi
 
 [Android 10 release notes - Security features](https://source.android.com/docs/setup/about/android-10-release#security_features)
 
-* File access disabled by default in `WebView`
+* File access disabled by default in `WebView`, see [setAllowFileAccess of WebSettings](https://developer.android.com/reference/android/webkit/WebSettings#setAllowFileAccess(boolean))
 * [TLS 1.3](https://en.wikipedia.org/wiki/Transport_Layer_Security#TLS_1.3) become available and enabled by default, see [TLS 1.3 enabled by default section of Android 10 Behavior changes: all apps](https://developer.android.com/about/versions/10/behavior-changes-all#tls-1.3)
 * Certificates signed with _SHA-1_ no longer trusted in _TLS_
 * System overlay permissions are reset on reboot for apps downloaded from _Google Play_, and after 30 seconds for sideloaded apps.
-* Background apps cannot launch other Activites (e.g. other apps)
-* [File Based Encryption (FBE)](https://source.android.com/docs/security/features/encryption/file-based) is mandatory for devices that launch with this Android version (devices updated to it can still continue using [Full Disk Encryption (FDE)](https://source.android.com/docs/security/features/encryption/full-disk))
+* Background apps cannot launch other Activites (e.g. other apps), see [Background apps launching section of Android 10 release notes](https://source.android.com/docs/setup/about/android-10-release#background_apps_launching) and [Background activity restrictions section of Security and Privacy Enhancements in Android 10](https://source.android.com/docs/security/enhancements/enhancements10#background-activity)
+* [File Based Encryption (FBE)](https://source.android.com/docs/security/features/encryption/file-based) is mandatory for devices that launch with this Android version (devices updated to it can still continue using [Full Disk Encryption (FDE)](https://source.android.com/docs/security/features/encryption/full-disk)), see [Encryption](https://source.android.com/docs/security/features/encryption)
 * `FLAG_SECURE` flag is added for biometric or device credential (_PIN_, _pattern_ or _password_) prompts, including both unlocking the device and [BiometricPrompt](https://developer.android.com/reference/android/hardware/biometrics/BiometricPrompt) in apps - this means you cannot take a screenshot of these screens and they also appear blacked out in screen shares, see [source for com.android.systemui.biometrics.AuthContainerView on Android Code Search](https://cs.android.com/android/platform/superproject/+/master:frameworks/base/packages/SystemUI/src/com/android/systemui/biometrics/AuthContainerView.java;l=843;bpv=0;bpt=0)
-* Only the default [Input Method Editor (IME)](https://developer.android.com/develop/ui/views/touch-and-input/creating-input-method) app can access _Clipboard_ data from the background, see [Limited access to clipboard data section of Privacy changes in Android 10](https://developer.android.com/about/versions/10/privacy/changes#clipboard-data)
-* [StrandHogg 2.0](https://promon.co/resources/downloads/strandhogg-2-0-new-serious-android-vulnerability/) exploit ([CVE-2020-0096](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-0096)) no longer possible (a patch for the vulnerability is also backported to Android 8.0, 8.1 and 9.0 with the [May 2020 security update](https://source.android.com/docs/security/bulletin/2020-05-01) - if the manufacturer released the update to a device), see [StrandHogg Attack / Task Affinity Vulnerability](https://developer.android.com/topic/security/risks/strandhogg) and [StrandHogg 2.0 Exploit Explained - Why Users and Android App Developers should care](https://www.xda-developers.com/strandhogg-2-0-android-vulnerability-explained-developer-mitigation/) and [Strandhogg Vulnerability](https://androidexplained.github.io/security/android/malware/2020/09/23/strandhogg.html)
+* Only the default [Input Method Editor (IME)](https://developer.android.com/develop/ui/views/touch-and-input/creating-input-method) app can access _Clipboard_ data from the background, see [Limited access to clipboard data section of Privacy changes in Android 10](https://developer.android.com/about/versions/10/privacy/changes#clipboard-data) and [Clipboard data section of Security and Privacy Enhancements in Android 10](https://source.android.com/docs/security/enhancements/enhancements10#clipboard-data)
+* [StrandHogg 2.0](https://promon.co/resources/downloads/strandhogg-2-0-new-serious-android-vulnerability/) exploit ([CVE-2020-0096](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-0096)) no longer possible (a patch for the vulnerability is also backported to _Android 8.0_, _8.1_ and _9.0_ with the [May 2020 security update](https://source.android.com/docs/security/bulletin/2020-05-01) - if the manufacturer released the update to a device), see [StrandHogg Attack / Task Affinity Vulnerability](https://developer.android.com/topic/security/risks/strandhogg) and [StrandHogg 2.0 Exploit Explained - Why Users and Android App Developers should care](https://www.xda-developers.com/strandhogg-2-0-android-vulnerability-explained-developer-mitigation/) and [Strandhogg Vulnerability](https://androidexplained.github.io/security/android/malware/2020/09/23/strandhogg.html)
 
 ## Android 11 (API 30) - Red Velvet Cake
 
@@ -91,24 +91,25 @@ Significant security enchancements of recent major Android versions, starting wi
 ](https://developer.android.com/training/package-visibility) and [Package visibility in Android 11](https://medium.com/androiddevelopers/package-visibility-in-android-11-cc857f221cd9)
 * _Runtime Permissions_ auto-reset for unused apps, see [Auto-reset permissions from unused apps section of Permissions updates in Android 11
 ](https://developer.android.com/about/versions/11/privacy/permissions#auto-reset) and [Auto-reset permissions of unused apps section of Request runtime permissions](https://developer.android.com/training/permissions/requesting#auto-reset-permissions-unused-apps)
-* [Scoped Storage](https://source.android.com/docs/core/storage/scoped) introduced, but apps can still opt-out of it via `requestLegacyExternalStorage`, see [Storage updates in Android 11](https://developer.android.com/about/versions/11/privacy/storage)
+* [Scoped Storage](https://source.android.com/docs/core/storage/scoped) introduced, but apps can still opt-out of it via `requestLegacyExternalStorage`, see [Storage updates in Android 11](https://developer.android.com/about/versions/11/privacy/storage) and [Opt out in your production app section of Android storage use cases and best practices](https://developer.android.com/training/data-storage/use-cases#opt-out-in-production-app)
 
 ## Android 12 (API 31) - Snow Cone
 
 [Android 12 release notes](https://source.android.com/docs/setup/about/android-12-release)
 
-* `android:exported` flag needs to be defined _explicitly_ in Manifests for components (_Activities_, _Content Providers_, etc.) that declare [Intent Filters](https://developer.android.com/guide/topics/manifest/intent-filter-element)
-* Generic web Intents resolve to user's default browser app _unless_ the target app is approved for the specific domain contained in that web Intent
-* Replace more _BouncyCastle_ implementations of cryptographic algorithms with _Conscrypt_ ones
+* `android:exported` flag needs to be defined _explicitly_ in Manifests for components (_Activities_, _Content Providers_, etc.) that declare [Intent Filters](https://developer.android.com/guide/topics/manifest/intent-filter-element), see [Safer component exporting section of Behavior changes: Apps targeting Android 12](https://developer.android.com/about/versions/12/behavior-changes-12#exported)
+* Generic web Intents resolve to user's default browser app _unless_ the target app is approved for the specific domain contained in that web Intent, see [Web intent resolution section of Android 12 Behavior changes: all apps](https://developer.android.com/about/versions/12/behavior-changes-all#web-intent-resolution)
+* Replace more _BouncyCastle_ implementations of cryptographic algorithms with _Conscrypt_ ones, see [BouncyCastle implementation removed section of Android 12 Behavior changes: all apps](https://developer.android.com/about/versions/12/behavior-changes-all#bouncy-castle)
 * The user gets notified if an app accesses _Clipboard_ data of another app for the first time, see [System notification shown when your app accesses clipboard data section of Copy and paste
 ](https://developer.android.com/develop/ui/views/touch-and-input/copy-paste#PastingSystemNotifications)
-* Apps can no longer close _System Dialogs_
+* Apps can no longer close _System Dialogs_, see [Apps can't close system dialogs section of Android 12 Behavior changes: all apps](https://developer.android.com/about/versions/12/behavior-changes-all#close-system-dialogs)
 * [Tapjacking](https://developer.android.com/topic/security/risks/tapjacking) mitigation: Apps are prevented from consuming touch events where an overlay obscures the app, see [Cloak & Dagger](https://cloak-and-dagger.org/)
-* [Scoped Storage](https://source.android.com/docs/core/storage/scoped) always enforced, opting out of it via `requestLegacyExternalStorage` is no longer possible
+* [Scoped Storage](https://source.android.com/docs/core/storage/scoped) always enforced, opting out of it via `requestLegacyExternalStorage` is no longer possible, see [Opt out in your production app section of Android storage use cases and best practices](https://developer.android.com/training/data-storage/use-cases#opt-out-in-production-app)
 
 ## Android 13 (API 33) - Tiramisu
 
 [Android 13 release notes - Security](https://source.android.com/docs/setup/about/android-13-release#security)
 
-* Non-matching Intents are blocked by _Intent filters_ (apps cannot send an Intent to another app's exported component unless it fully matches the _Intent filter_ defined by it)
+* Non-matching Intents are blocked by _Intent filters_ (apps cannot send an Intent to another app's exported component unless it fully matches the _Intent filter_ defined by it), see [Intents should match declared intent filters section of Android 13 and Android 13 QPR release notes
+](https://source.android.com/docs/setup/about/android-13-release#declared-intent-filters)
 * Only [File Based Encryption (FBE)](https://source.android.com/docs/security/features/encryption/file-based) is allowed, [Full Disk Encryption (FDE)](https://source.android.com/docs/security/features/encryption/full-disk) is no longer - not even for devices updated from a version that it was allowed
