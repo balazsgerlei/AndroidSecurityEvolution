@@ -6,7 +6,7 @@ Significant security enhancements of recent major Android versions, starting wit
 
 ## Android 5.0 (API 21) - Lollipop
 
-[Security Enhancements in Android 5.0](https://source.android.com/docs/security/enhancements/enhancements50)
+[Security Enhancements - Android 5](https://source.android.com/docs/security/enhancements#android-5)
 
 * Starting August 2023, _Google Play Services_ updates will only be received from this Android version see [Google Play services discontinuing updates for KitKat (API levels 19 & 20) starting August 2023](https://android-developers.googleblog.com/2023/07/google-play-services-discontinuing-updates-for-kitkat.html)
 * [Full Disk Encryption (FDE)](https://source.android.com/docs/security/features/encryption/full-disk) by default (manufacturers can still opt out), see [Encryption](https://source.android.com/docs/security/features/encryption) and [Security Enhancements in Android 5.0](https://source.android.com/docs/security/enhancements/enhancements50)
@@ -15,7 +15,7 @@ Significant security enhancements of recent major Android versions, starting wit
 
 ## Android 6 (API 23) - Marshmallow
 
-[Security Enhancements in Android 6.0](https://source.android.com/docs/security/enhancements/enhancements60)
+[Security Enhancements in Android 6](https://source.android.com/docs/security/enhancements#android-6)
 
 * [Keystore](https://developer.android.com/reference/java/security/KeyStore) API significantly extended (symmetric cryptographic primitives, _AES_ and _HMAC_ support and access control system for hardware-backed keys) see [Hardware-backed Keystore](https://source.android.com/docs/security/features/keystore)
 * [TEE](https://source.android.com/docs/security/features/trusty) is a requirement, see [Hardware-backed Keystore](https://source.android.com/docs/security/features/keystore) and [7.3.10. Fingerprint Sensor section of Android 6.0 Compatibility Definition](https://source.android.com/docs/compatibility/6.0/android-6.0-cdd#7_3_10_fingeprint)
@@ -26,7 +26,7 @@ Significant security enhancements of recent major Android versions, starting wit
 
 ## Android 7 (API 24) - Nougat
 
-[Security Enhancements in Android 7.0](https://source.android.com/docs/security/enhancements/enhancements70)
+[Security Enhancements - Android 7](https://source.android.com/docs/security/enhancements#android-7)
 
 * Separate _User_ and _System Certificate Trust Store_, meaning _Man-in-the-Middle_ attacks basically require root access from this point, see [Changes to Trusted Certificate Authorities in Android Nougat](https://android-developers.googleblog.com/2016/07/changes-to-trusted-certificate.html)
 * Added [Network Security Config](https://developer.android.com/training/articles/security-config) support so apps can customize the behavior of their secure (_HTTPS_, _TLS_) connections in a simple declarative way, without code modification. It supports custom trust anchors (which [Certificate Authorities (CA)](https://en.wikipedia.org/wiki/Certificate_authority) the app trusts), debug-only overrides, _cleartext traffic_ opt-out and certificate pinning (limiting which server keys are trusted), see [Network Security Config section of Android 7.0 for Developers
@@ -40,7 +40,7 @@ Significant security enhancements of recent major Android versions, starting wit
 
 ## Android 8 (API 26) - Oreo
 
-[Security Enhancements in Android 8.0](https://source.android.com/docs/security/enhancements/enhancements80)
+[Security Enhancements - Android 8](https://source.android.com/docs/security/enhancements#android-8)
 
 * _JavaScript_ evaluation runs in a separate process in `WebView` so _JavaScript_ code cannot access the app's memory so easily, see [What’s new in WebView security](https://android-developers.googleblog.com/2017/06/whats-new-in-webview-security.html) and [Security section of Android 8.0 Behavior Changes for All Apps
 ](https://developer.android.com/about/versions/oreo/android-8.0-changes#security-all)
@@ -56,8 +56,6 @@ Significant security enhancements of recent major Android versions, starting wit
 
 ## Android 9 (API 28) - Pie
 
-[Security Enhancements in Android 9](https://source.android.com/docs/security/enhancements/enhancements9)
-
 [Android 9 release notes - Security features](https://source.android.com/docs/setup/about/p-release-notes#security_features)
 
 * _Cleartext network traffic (HTTP)_ disabled by default, apps need to explicitly set `cleartextTrafficPermitted` to `true` in their [Network Security Config](https://developer.android.com/training/articles/security-config) it if they still want to use it (not recommended), see [Network TLS enabled by default section of Behavior changes: apps targeting API level 28+
@@ -71,7 +69,7 @@ Significant security enhancements of recent major Android versions, starting wit
 
 ## Android 10 (API 29) - Quince Tart
 
-[Security Enhancements in Android 10](https://source.android.com/docs/security/enhancements/enhancements10)
+[Security Enhancements - Android 10](https://source.android.com/docs/security/enhancements#android-10)
 
 [Android 10 release notes - Security features](https://source.android.com/docs/setup/about/android-10-release#security_features)
 
@@ -86,8 +84,6 @@ Significant security enhancements of recent major Android versions, starting wit
 
 ## Android 11 (API 30) - Red Velvet Cake
 
-[Security Enhancements in Android 11](https://source.android.com/docs/security/enhancements/enhancements11)
-
 [Android 11 release notes - Secure](https://source.android.com/docs/setup/about/android-11-release#secure)
 
 * _Task Hijacking_ ([StrandHogg 1.0](https://promon.co/security-news/the-strandhogg-vulnerability/)) exploit (when another app sets its `taskAffinity` to the same as the target to trick the user to launch it even if they inteded to launch the target app and used it's legitimate app icon) no longer possible, see [StrandHogg Attack / Task Affinity Vulnerability](https://developer.android.com/topic/security/risks/strandhogg) and [Strandhogg Vulnerability](https://androidexplained.github.io/security/android/malware/2020/09/23/strandhogg.html)
@@ -98,6 +94,8 @@ Significant security enhancements of recent major Android versions, starting wit
 * [Scoped Storage](https://source.android.com/docs/core/storage/scoped) introduced, but apps can still opt-out of it via `requestLegacyExternalStorage`, see [Storage updates in Android 11](https://developer.android.com/about/versions/11/privacy/storage) and [Opt out in your production app section of Android storage use cases and best practices](https://developer.android.com/training/data-storage/use-cases#opt-out-in-production-app)
 
 ## Android 12 (API 31) - Snow Cone
+
+[Security Enhancements - Android 12](https://source.android.com/docs/security/enhancements#android-12)
 
 [Android 12 release notes](https://source.android.com/docs/setup/about/android-12-release)
 
@@ -111,6 +109,8 @@ Significant security enhancements of recent major Android versions, starting wit
 * [Scoped Storage](https://source.android.com/docs/core/storage/scoped) always enforced, opting out of it via `requestLegacyExternalStorage` is no longer possible, see [Opt out in your production app section of Android storage use cases and best practices](https://developer.android.com/training/data-storage/use-cases#opt-out-in-production-app)
 
 ## Android 13 (API 33) - Tiramisu
+
+[Security Enhancements - Android 13](https://source.android.com/docs/security/enhancements#android-13)
 
 [Android 13 release notes - Security](https://source.android.com/docs/setup/about/android-13-release#security)
 
