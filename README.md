@@ -1,4 +1,6 @@
 # Android Security Evolution
+[![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg)](https://android-arsenal.com/api?level=21)
+[![last commit](https://img.shields.io/github/last-commit/balazsgerlei/AndroidSecurityEvolution?color=018786)](https://github.com/balazsgerlei/AndroidSecurityEvolution/commits/main)
 
 Significant security enhancements of recent major Android versions, starting with _Android 5.0 Lollipop_ (API 21).
 
