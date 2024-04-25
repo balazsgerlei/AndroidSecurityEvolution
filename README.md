@@ -107,6 +107,13 @@ Significant security enhancements of recent major Android versions, starting wit
 * Apps can no longer close _System Dialogs_, see [Apps can't close system dialogs section of Android 12 Behavior changes: all apps](https://developer.android.com/about/versions/12/behavior-changes-all#close-system-dialogs)
 * [Tapjacking](https://developer.android.com/topic/security/risks/tapjacking) mitigation: Apps are prevented from consuming touch events where an overlay obscures the app, see [Cloak & Dagger](https://cloak-and-dagger.org/)
 * [Scoped Storage](https://source.android.com/docs/core/storage/scoped) always enforced, opting out of it via `requestLegacyExternalStorage` is no longer possible, see [Opt out in your production app section of Android storage use cases and best practices](https://developer.android.com/training/data-storage/use-cases#opt-out-in-production-app)
+* New option to only grant permission to access approximate location
+* New Privacy Indicators on the status bar to indicate to the user when an app uses camera or microphone
+* [BiometricManager.Strings](https://developer.android.com/reference/android/hardware/biometrics/BiometricManager.Strings) API introduced providing localized strings for apps that use `BiometricPrompt` for authentication.
+* Added support for _under-display_ fingerprint sensors
+* [Fingerprint Android Interface Definition Language](https://android.googlesource.com/platform/hardware/interfaces/+/refs/heads/main/biometrics/fingerprint/2.3/IBiometricsFingerprint.hal) (AIDL) introduced
+* [Private Compute Services](https://github.com/google/private-compute-services) introduced as a secure partition for processing sensitive user data on-device, used by AI-driven features like Live Caption, Now Playing and Smart Reply. Google defines it as a "secure, isolated data processing environment inside of the Android operating system that gives you control of the data inside, such as deciding if, how, and when it is shared with others". See [Introducing Android’s Private Compute Services](https://security.googleblog.com/2021/09/introducing-androids-private-compute.html), [Google officially explains how Android's Private Compute Core works](https://www.xda-developers.com/android-private-compute-core-explanation/) and [Android Private Compute Core Architecture whitepaper](https://arxiv.org/abs/2209.10317)
+* Rust language support for platform development
 
 ## Android 13 (API 33) - Tiramisu
 
@@ -117,3 +124,10 @@ Significant security enhancements of recent major Android versions, starting wit
 * Non-matching _Intents_ are blocked by _Intent filters_ (apps cannot send an _Intent_ to another app's exported component unless it fully matches the _Intent filter_ defined by it), see [Intents should match declared intent filters section of Android 13 and Android 13 QPR release notes
 ](https://source.android.com/docs/setup/about/android-13-release#declared-intent-filters)
 * Only [File Based Encryption (FBE)](https://source.android.com/docs/security/features/encryption/file-based) is allowed, [Full Disk Encryption (FDE)](https://source.android.com/docs/security/features/encryption/full-disk) is no longer - not even for devices updated from a version that it was allowed
+* [Shared UIDs](https://developer.android.com/guide/topics/manifest/manifest-element#uid) are deprecated. It was used to share the sandbox access between two or more apps and the ability to run in the same process. It could cause non-deterministic behavior within the package manager so it would be removed in a future Android version. See [Application Signing](https://source.android.com/docs/security/features/apksigning)
+* Keymaster support for symmetric cryptographic primitives such as _AES_ (Advanced Encryption Standard), _HMAC_ (Keyed-Hash Message Authentication Code), and asymmetric cryptographic algorithms (including _Elliptic Curve_, _RSA2048_, _RSA4096_, and _Curve 25519_)
+* `POST_NOTIFICATIONS` runtime permission added for sending non-exempt (including _Foreground Services_ (FGS)) notifications from an app, see [Notification runtime permission](https://developer.android.com/develop/ui/views/notifications/notification-permission)
+* Added _per-use_ prompt for apps requesting access to all device logs, giving users the ability to allow or deny access, see [Manage your device logs on Android](https://support.google.com/android/answer/12986432)
+* [Android Virtualization Framework (AVF)](https://source.android.com/docs/core/virtualization) introduced, bringing together different hypervisors under one framework with standardized APIs.
+* [APK signature scheme v3.1](https://source.android.com/docs/security/features/apksigning/v3-1) introduced, with all new key rotations that use `apksigner` will use the v3.1 signature scheme by default to target rotation for Android 13 and higher.
+
