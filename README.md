@@ -131,3 +131,15 @@ Significant security enhancements of recent major Android versions, starting wit
 * [Android Virtualization Framework (AVF)](https://source.android.com/docs/core/virtualization) introduced, bringing together different hypervisors under one framework with standardized APIs.
 * [APK signature scheme v3.1](https://source.android.com/docs/security/features/apksigning/v3-1) introduced, with all new key rotations that use `apksigner` will use the v3.1 signature scheme by default to target rotation for Android 13 and higher.
 
+## Android 14 (API 34) - Upside Down Cake
+
+[Security Enhancements - Android 14](https://source.android.com/docs/security/enhancements#android-14)
+
+[Android 14 Security Release Notes](https://source.android.com/docs/security/bulletin/android-14)
+
+* Add some description to location permission prompts that describe why an app might need this permission.
+* Significant improvements to [Hardware-assisted AddressSanitizer (HWASan)](https://source.android.com/docs/security/test/hwasan), which was introduced back in Android 10 as a memory error detection tool similar to the _deprecated_ [AddressSanitizer](https://source.android.com/docs/security/test/asan) which it replaces.
+* Added support to reject null-ciphered cellular connections, ensuring that circuit-switched voice and SMS traffic is always encrypted and protected from passive over-the-air interception, see [Android 14 introduces first-of-its-kind cellular connectivity security features](https://security.googleblog.com/2023/08/android-14-introduces-first-of-its-kind.html)
+* Added support for multiple IMEIs
+* _AES-HCTR2_ is now the preferred mode of filenames encryption for devices with accelerated cryptography instructions.
+* If an app targets Android 14 and uses [Dynamic Code Loading (DCL)](https://en.wikipedia.org/wiki/Dynamic_loading), all dynamically-loaded files must be marked as _read-only_ or otherwise, the system will throw an `Exception`, see [Safer dynamic code loading section of Behavior changes: Apps targeting Android 14 or higher](https://developer.android.com/about/versions/14/behavior-changes-14#safer-dynamic-code-loading)
